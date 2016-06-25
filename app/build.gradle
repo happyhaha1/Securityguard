@@ -27,4 +27,17 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support:support-annotations:23.4.0'
+    compile rootProject.ext.dependencies["recyclerview-v7"]
+    compile rootProject.ext.dependencies["picasso"]
+    compile rootProject.ext.dependencies["numberprogressbar"]
+    compile rootProject.ext.dependencies["photoview"]
+    compile rootProject.ext.dependencies["umeng-analytics"]
+    compile rootProject.ext.dependencies["retrofit"]
+    compile rootProject.ext.dependencies["rxandroid"]
+    compile rootProject.ext.dependencies["okhttp-urlconnection"]
+    compile rootProject.ext.dependencies["okhttp"]
+    compile rootProject.ext.dependencies["butterknife"]
+    compile rootProject.ext.dependencies["otto"]
+    compile rootProject.ext.dependencies["glide"]
+    compile rootProject.ext.dependencies["xutils"]
 }

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -19,18 +18,16 @@ import cn.kxlove.security.R;
  */
 public class InterPasswordDialog extends Dialog implements View.OnClickListener{
 
-    private Context context;
+
     private EditText mInterPWDET;
     private TextView mTitleTV;
-    private Button mOkButton;
-    private Button mCancelButton;
     private MyCallBack myCallBack;
 
 
 
     public InterPasswordDialog(Context context) {
         super(context, R.style.dialog_custom);
-        this.context=context;
+//        this.context=context;
     }
 
     public void setCallBack(MyCallBack mycallBack){
@@ -47,10 +44,8 @@ public class InterPasswordDialog extends Dialog implements View.OnClickListener{
     private void initView() {
         mTitleTV = (TextView) findViewById(R.id.tv_interpwd_title);
         mInterPWDET  = (EditText) findViewById(R.id.et_inter_password);
-        mOkButton = (Button) findViewById(R.id.btn_confirm);
-        mOkButton.setOnClickListener(this);
-        mCancelButton = (Button) findViewById(R.id.btn_dismiss);
-        mCancelButton.setOnClickListener(this);
+        findViewById(R.id.btn_confirm).setOnClickListener(this);
+        findViewById(R.id.btn_dismiss).setOnClickListener(this);
     }
 
     public void setTitle(String title){
@@ -81,8 +76,8 @@ public class InterPasswordDialog extends Dialog implements View.OnClickListener{
 
     }
 
-public interface MyCallBack{
-    void confirm();
-    void dismiss();
-}
+    public interface MyCallBack{
+        void confirm();
+        void dismiss();
+    }
 }

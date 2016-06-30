@@ -44,9 +44,9 @@ public class HomeActivity extends BaseActivity {
                 switch (position){
                     case 0://手机防盗
                         if(isSetUpPassword()){
-                            showInterPasswordDialog();
+                            showInterPswdDialog();
                         }else{
-                            showSetUpPasswordDialog();
+                            showSetUpPswdDialog();
                         }
                         break;
                     case 1://通讯卫士
@@ -76,41 +76,44 @@ public class HomeActivity extends BaseActivity {
      * 设置密码对话框
      */
 
-    private void showSetUpPasswordDialog(){
-        final SetUpPasswordDialog msetPwdDialog = new SetUpPasswordDialog(HomeActivity.this);
-        msetPwdDialog.setCallBack(new SetUpPasswordDialog.MyCallBack(){
+    private void showSetUpPswdDialog(){
+        final SetUpPasswordDialog setUpPasswordDialog = new SetUpPasswordDialog(HomeActivity.this);
+        setUpPasswordDialog.setCallBack(new SetUpPasswordDialog.MyCallBack(){
             @Override
             public void ok() {
-                String firstPwd = msetPwdDialog.mFirstPWDET.getText().toString().trim();
-                String affirmPwd = msetPwdDialog.mAffirmET.getText().toString().trim();
-
-                if (!TextUtils.isEmpty(firstPwd) && !TextUtils.isEmpty(affirmPwd)) {
-                    //两次密码一致，则保存
-                    if (firstPwd.equals(affirmPwd)) {
-                        savePwd(affirmPwd);
-                        //显示输入密码对话框
-                        showInterPasswordDialog();
+                String firstPwsd = setUpPasswordDialog.mFirstPWDET
+                        .getText().toString().trim();
+                String affirmPwsd = setUpPasswordDialog.mAffirmET
+                        .getText().toString().trim();
+                if (!TextUtils.isEmpty(firstPwsd)
+                        && !TextUtils.isEmpty(affirmPwsd)) {
+                    if (firstPwsd.equals(affirmPwsd)) {
+                        // 两次密码一致,存储密码
+                        savePswd(affirmPwsd);
+                        setUpPasswordDialog.dismiss();
+                        // 显示输入密码对话框
+                        showInterPswdDialog();
                     } else {
-                        Toast.makeText(HomeActivity.this, "两次密码不一致", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HomeActivity.this, "两次密码不一致！", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(HomeActivity.this, "两次密码不一致", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeActivity.this, "密码不能为空！", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void cancel() {
-                msetPwdDialog.dismiss();
+                setUpPasswordDialog.dismiss();
             }
         });
-        msetPwdDialog.setCancelable(true);
-        msetPwdDialog.show();
+        setUpPasswordDialog.setCancelable(true);
+        setUpPasswordDialog.show();
     }
 
     /**
      * 输入密码对话框
      */
-    private void showInterPasswordDialog(){
+    private void showInterPswdDialog(){
         final String password = getPassword();
         final InterPasswordDialog mInterPasswordDialog =  new InterPasswordDialog(HomeActivity.this);
 
@@ -143,7 +146,7 @@ public class HomeActivity extends BaseActivity {
      * @return
      */
 
-    private void savePwd(String affirmPwd){
+    private void savePswd(String affirmPwd){
         SharedPreferences.Editor editor = msharedPreferences.edit();
         editor.putString("PhoneAntiTheftPWD", MD5Utils.encode(affirmPwd));
         editor.apply();

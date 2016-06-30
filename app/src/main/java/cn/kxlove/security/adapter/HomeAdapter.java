@@ -35,8 +35,8 @@ public class HomeAdapter extends BaseAdapter {
 				R.layout.item_home, null);
 		ImageView iv_icon = (ImageView) view.findViewById(R.id.iv_icon);
 		TextView tv_name = (TextView) view.findViewById(R.id.tv_name);
-//		iv_icon.setImageResource(imageId[position]);
-//		tv_name.setText(names[position]);
+		iv_icon.setImageResource(imageId[position]);
+		tv_name.setText(names[position]);
 		return view;
 	}
 	//  后面两个方法暂时不需要设置

@@ -85,9 +85,14 @@ public class SetUp2Activity extends BaseSetUpActivity {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_PHONE_STATE)
                 != PackageManager.PERMISSION_GRANTED) {
-
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.READ_PHONE_STATE)) {
+                Toast.makeText(this, "获取条件不被赞同", Toast.LENGTH_SHORT)
+                        .show();
+            }else {
                 ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_PHONE_STATE},SIM_ALLOW);
+                        new String[]{Manifest.permission.READ_PHONE_STATE}, SIM_ALLOW);
+            }
         }else {
             bindSIM();
         }

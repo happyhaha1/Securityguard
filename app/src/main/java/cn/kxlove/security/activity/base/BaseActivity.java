@@ -24,8 +24,8 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        ButterKnife.bind(this);
+//        x().inject(this);
         x.view().inject(this);
-
 
     }
 

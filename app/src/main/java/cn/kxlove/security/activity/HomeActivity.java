@@ -26,6 +26,7 @@ public class HomeActivity extends BaseActivity {
 
     @ViewInject(R.id.gv_home)
     private GridView gridView;
+
     private long mExitTime;
 
     //存储设置文件

@@ -13,6 +13,7 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 
 import cn.kxlove.security.R;
+import cn.kxlove.security.activity.base.BaseActivity;
 import cn.kxlove.security.adapter.HomeAdapter;
 import cn.kxlove.security.dialog.InterPasswordDialog;
 import cn.kxlove.security.dialog.SetUpPasswordDialog;

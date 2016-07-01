@@ -7,6 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import cn.kxlove.security.R;
+import cn.kxlove.security.activity.base.BaseActivity;
 
 /**
  * @author: zhengkaixin

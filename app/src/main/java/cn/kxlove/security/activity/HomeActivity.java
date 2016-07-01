@@ -14,6 +14,7 @@ import org.xutils.view.annotation.ViewInject;
 
 import cn.kxlove.security.R;
 import cn.kxlove.security.activity.base.BaseActivity;
+import cn.kxlove.security.activity.lost.LostFindActivity;
 import cn.kxlove.security.adapter.HomeAdapter;
 import cn.kxlove.security.dialog.InterPasswordDialog;
 import cn.kxlove.security.dialog.SetUpPasswordDialog;
@@ -125,7 +126,8 @@ public class HomeActivity extends BaseActivity {
                     Toast.makeText(HomeActivity.this,"密码不能为空",Toast.LENGTH_SHORT).show();
                 }else if(password.equals(MD5Utils.encode(mInterPasswordDialog.getPassword()))){
                     //进入防盗界面
-                    Toast.makeText(HomeActivity.this,"成功进入防盗界面",Toast.LENGTH_SHORT).show();
+                    startActivity(LostFindActivity.class);
+//                    Toast.makeText(HomeActivity.this,"成功进入防盗界面",Toast.LENGTH_SHORT).show();
                 }else{
                     mInterPasswordDialog.dismiss();
                     Toast.makeText(HomeActivity.this,"密码错误，请重新输入",Toast.LENGTH_SHORT).show();

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import cn.kxlove.security.R;
@@ -22,6 +23,8 @@ public abstract class BaseSetUpActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        SharedPreferences sp = getSharedPreferences("config", MODE_PRIVATE);
         // 2.初始化手势识别器。
         mGestureDetector = new GestureDetector(this,

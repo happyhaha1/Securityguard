@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.HomeActivity"/>
+        <activity android:name=".activity.lost.LostFindActivity"/>
+        <activity android:name=".activity.lost.SetUp1Activity"/>
     </application>
 
 </manifest>

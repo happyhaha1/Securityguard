@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
 import cn.kxlove.security.R;
@@ -18,7 +20,7 @@ import cn.kxlove.security.activity.base.BaseActivity;
  */
 
 @ContentView(R.layout.activity_lostfind)
-public class LostFindActivity extends BaseActivity implements View.OnClickListener{
+public class LostFindActivity extends BaseActivity{
 
     private SharedPreferences msharedPreferences;
 
@@ -35,16 +37,14 @@ public class LostFindActivity extends BaseActivity implements View.OnClickListen
         msharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
         if(!isSetUp()){
             //如果没有进入过设置向导，则进入
-            startActivity(SetUp1Activity.class);
+//            startActivity(SetUp1Activity.class);
         }
         initView();
     }
 
     private void initView() {
-//        TextView mTitleTV = (TextView) findViewById(R.id.tv_title);
         mTextView.setText("手机防盗");
-//        ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
-        mLeftImgv.setOnClickListener(this);
+//        mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
         findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.purple));
         setStatusBarColor(getResources().getColor(R.color.purple));
@@ -54,8 +54,19 @@ public class LostFindActivity extends BaseActivity implements View.OnClickListen
         return msharedPreferences.getBoolean("isSetUp", false);
     }
 
-    @Override
-    public void onClick(View v) {
 
+    @Event(value = {R.id.imgv_leftbtn,R.id.rl_inter_setup_wizard})
+    private void onImgvClick(View v) {
+        switch (v.getId()) {
+            case R.id.rl_inter_setup_wizard:
+                //重新进入设置向导
+                Toast.makeText(getApplicationContext(),
+                        "无效动作,移动太慢", Toast.LENGTH_SHORT).show();
+                startActivity(SetUp1Activity.class);
+                break;
+            case R.id.imgv_leftbtn:
+                finish();
+                break;
+        }
     }
 }

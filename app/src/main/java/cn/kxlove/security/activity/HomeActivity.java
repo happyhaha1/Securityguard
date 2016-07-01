@@ -128,6 +128,7 @@ public class HomeActivity extends BaseActivity {
                     Toast.makeText(HomeActivity.this,"密码不能为空",Toast.LENGTH_SHORT).show();
                 }else if(password.equals(MD5Utils.encode(mInterPasswordDialog.getPassword()))){
                     //进入防盗界面
+                    mInterPasswordDialog.dismiss();
                     startActivity(LostFindActivity.class);
 //                    Toast.makeText(HomeActivity.this,"成功进入防盗界面",Toast.LENGTH_SHORT).show();
                 }else{

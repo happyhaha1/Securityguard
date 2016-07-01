@@ -1,6 +1,7 @@
 package cn.kxlove.security.activity;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -35,6 +36,7 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_home);
 //        x.view().inject(this);
+        setStatusBarColor(Color.argb(255,197,195,195));
         msharedPreferences = getSharedPreferences("config",MODE_PRIVATE);
 
         //填充GridView

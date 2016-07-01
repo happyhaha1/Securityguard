@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
+
 import cn.kxlove.security.R;
 import cn.kxlove.security.activity.base.BaseSetUpActivity;
 
@@ -12,14 +15,17 @@ import cn.kxlove.security.activity.base.BaseSetUpActivity;
  * @date: 16/7/1
  */
 
+@ContentView(R.layout.activity_setup1)
 public class SetUp1Activity extends BaseSetUpActivity{
 
+    @ViewInject(R.id.rb_first)
+    private RadioButton rbFirst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setup1);
-        ((RadioButton) findViewById(R.id.rb_first)).setChecked(true);
+//        setContentView(R.layout.activity_setup1);
+        rbFirst.setChecked(true);
 
 
     }

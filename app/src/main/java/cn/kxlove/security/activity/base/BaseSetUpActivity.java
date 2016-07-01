@@ -2,9 +2,8 @@ package cn.kxlove.security.activity.base;
 
 import android.os.Bundle;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import cn.kxlove.security.R;
@@ -14,7 +13,7 @@ import cn.kxlove.security.R;
  * @date: 16/7/1
  */
 
-public abstract class BaseSetUpActivity extends BaseActivity {
+public abstract class BaseSetUpActivity extends BaseNoTitleActivity {
 
     private GestureDetector mGestureDetector;
 
@@ -22,9 +21,9 @@ public abstract class BaseSetUpActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        SharedPreferences sp = getSharedPreferences("config", MODE_PRIVATE);
         // 2.初始化手势识别器。
         mGestureDetector = new GestureDetector(this,
@@ -77,5 +76,8 @@ public abstract class BaseSetUpActivity extends BaseActivity {
         return super.onTouchEvent(event);
     }
 
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return keyCode != KeyEvent.KEYCODE_BACK && super.onKeyDown(keyCode, event);
+    }
 }

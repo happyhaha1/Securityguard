@@ -2,11 +2,8 @@ package cn.kxlove.security.activity.lost;
 
 import android.Manifest;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
@@ -20,12 +17,19 @@ import org.xutils.view.annotation.ViewInject;
 
 import cn.kxlove.security.R;
 import cn.kxlove.security.activity.base.BaseSetUpActivity;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.OnNeverAskAgain;
+import permissions.dispatcher.OnPermissionDenied;
+import permissions.dispatcher.OnShowRationale;
+import permissions.dispatcher.PermissionRequest;
+import permissions.dispatcher.RuntimePermissions;
 
 /**
  * @author: zhengkaixin
  * @date: 16/7/1
  */
 @ContentView(R.layout.activity_setup2)
+@RuntimePermissions
 public class SetUp2Activity extends BaseSetUpActivity {
 
     private TelephonyManager mTelephonyManager;
@@ -41,7 +45,6 @@ public class SetUp2Activity extends BaseSetUpActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_setup2);
         mTelephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
         initView();
     }
@@ -58,19 +61,14 @@ public class SetUp2Activity extends BaseSetUpActivity {
 
     private boolean isBind() {
         String simString = sp.getString("sim", null);
-        if (TextUtils.isEmpty(simString)) {
-            return false;
-        }
-        return true;
+        return !TextUtils.isEmpty(simString);
     }
 
     @Override
     public void showNext() {
         if (!isBind()) {
             Toast.makeText(this, "您还没有帮定SIM卡！", Toast.LENGTH_SHORT).show();
-            return;
         }
-//        startActivityAndFinishSelf(SetUp3Activity.class);
     }
 
     @Override
@@ -81,27 +79,28 @@ public class SetUp2Activity extends BaseSetUpActivity {
 
     @Event(R.id.btn_bind_sim)
     private void simClick(View v) {
-
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_PHONE_STATE)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.READ_PHONE_STATE)) {
-                Toast.makeText(this, "获取条件不被赞同", Toast.LENGTH_SHORT)
-                        .show();
-            }else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_PHONE_STATE}, SIM_ALLOW);
-            }
-        }else {
-            bindSIM();
-        }
+//        if (ContextCompat.checkSelfPermission(this,
+//                Manifest.permission.READ_PHONE_STATE)
+//                != PackageManager.PERMISSION_GRANTED) {
+//            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+//                    Manifest.permission.READ_PHONE_STATE)) {
+//                Toast.makeText(this, "获取条件不被赞同", Toast.LENGTH_SHORT)
+//                        .show();
+//            }else {
+//                ActivityCompat.requestPermissions(this,
+//                        new String[]{Manifest.permission.READ_PHONE_STATE}, SIM_ALLOW);
+//            }
+//        }else {
+//            bindSIM();
+//        }
+        SetUp2ActivityPermissionsDispatcher.bindSIMWithCheck(this);
     }
 
     /**
      * 绑定sim卡
      */
-    private void bindSIM() {
+    @NeedsPermission(Manifest.permission.READ_PHONE_STATE)
+    void bindSIM() {
         if (!isBind()) {
             String simSerialNumber = mTelephonyManager.getSimSerialNumber();
             SharedPreferences.Editor edit = sp.edit();
@@ -114,24 +113,27 @@ public class SetUp2Activity extends BaseSetUpActivity {
             Toast.makeText(this, "SIM卡已经绑定！", Toast.LENGTH_SHORT).show();
             mBindSIMBtn.setEnabled(false);
         }
+    }
 
+    @OnShowRationale(Manifest.permission.READ_PHONE_STATE)
+    void showRationaleForSIM(PermissionRequest request) {
+        // NOTE: Show a rationale to explain why the permission is needed, e.g. with a dialog.
+        // Call proceed() or cancel() on the provided PermissionRequest to continue or abort
+        showRationaleDialog("获取sim卡信息权限被关闭,请开启", request);
+    }
 
+    @OnPermissionDenied(Manifest.permission.READ_PHONE_STATE)
+    void showDeniedForSIM() {
+        Toast.makeText(this, "权限不被允许", Toast.LENGTH_SHORT).show();
+    }
 
+    @OnNeverAskAgain(Manifest.permission.READ_PHONE_STATE)
+    void onSIMNeverAskAgain() {
+        Toast.makeText(this, "你没有统一该权限", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case SIM_ALLOW:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    bindSIM();
-                } else {
-                    Toast.makeText(this, "获取条件不被赞同", Toast.LENGTH_SHORT)
-                            .show();
-                }
-                break;
-            default:
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
+        SetUp2ActivityPermissionsDispatcher.onRequestPermissionsResult(this,requestCode,grantResults);
     }
 }

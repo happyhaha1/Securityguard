@@ -32,8 +32,7 @@ public class SetUp1Activity extends BaseSetUpActivity{
 
     @Override
     public void showNext() {
-        Toast.makeText(this, "下一页", Toast.LENGTH_SHORT).show();
-
+        startActivityAndFinishSelf(SetUp2Activity.class);
     }
 
     @Override

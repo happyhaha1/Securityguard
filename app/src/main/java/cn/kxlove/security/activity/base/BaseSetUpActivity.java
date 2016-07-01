@@ -1,5 +1,6 @@
 package cn.kxlove.security.activity.base;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.KeyEvent;
@@ -15,6 +16,8 @@ import cn.kxlove.security.R;
 
 public abstract class BaseSetUpActivity extends BaseNoTitleActivity {
 
+    protected SharedPreferences sp;
+
     private GestureDetector mGestureDetector;
 
     @Override
@@ -24,7 +27,7 @@ public abstract class BaseSetUpActivity extends BaseNoTitleActivity {
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        SharedPreferences sp = getSharedPreferences("config", MODE_PRIVATE);
+        sp = getSharedPreferences("config", MODE_PRIVATE);
         // 2.初始化手势识别器。
         mGestureDetector = new GestureDetector(this,
                 new GestureDetector.SimpleOnGestureListener() {

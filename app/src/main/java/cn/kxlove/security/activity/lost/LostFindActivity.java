@@ -37,7 +37,7 @@ public class LostFindActivity extends BaseActivity{
         msharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
         if(!isSetUp()){
             //如果没有进入过设置向导，则进入
-//            startActivity(SetUp1Activity.class);
+            startActivity(SetUp1Activity.class);
         }
         initView();
     }

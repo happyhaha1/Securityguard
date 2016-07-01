@@ -79,20 +79,6 @@ public class SetUp2Activity extends BaseSetUpActivity {
 
     @Event(R.id.btn_bind_sim)
     private void simClick(View v) {
-//        if (ContextCompat.checkSelfPermission(this,
-//                Manifest.permission.READ_PHONE_STATE)
-//                != PackageManager.PERMISSION_GRANTED) {
-//            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-//                    Manifest.permission.READ_PHONE_STATE)) {
-//                Toast.makeText(this, "获取条件不被赞同", Toast.LENGTH_SHORT)
-//                        .show();
-//            }else {
-//                ActivityCompat.requestPermissions(this,
-//                        new String[]{Manifest.permission.READ_PHONE_STATE}, SIM_ALLOW);
-//            }
-//        }else {
-//            bindSIM();
-//        }
         SetUp2ActivityPermissionsDispatcher.bindSIMWithCheck(this);
     }
 
@@ -129,7 +115,7 @@ public class SetUp2Activity extends BaseSetUpActivity {
 
     @OnNeverAskAgain(Manifest.permission.READ_PHONE_STATE)
     void onSIMNeverAskAgain() {
-        Toast.makeText(this, "你没有统一该权限", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "你没有同意该权限", Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -40,8 +40,6 @@ public class SetUp2Activity extends BaseSetUpActivity {
     @ViewInject(R.id.rb_second)
     private RadioButton mRbSecond;
 
-    private static final int SIM_ALLOW=11;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +67,7 @@ public class SetUp2Activity extends BaseSetUpActivity {
         if (!isBind()) {
             Toast.makeText(this, "您还没有帮定SIM卡！", Toast.LENGTH_SHORT).show();
         }
+        startActivityAndFinishSelf(SetUp3Activity.class);
     }
 
     @Override
@@ -103,8 +102,6 @@ public class SetUp2Activity extends BaseSetUpActivity {
 
     @OnShowRationale(Manifest.permission.READ_PHONE_STATE)
     void showRationaleForSIM(PermissionRequest request) {
-        // NOTE: Show a rationale to explain why the permission is needed, e.g. with a dialog.
-        // Call proceed() or cancel() on the provided PermissionRequest to continue or abort
         showRationaleDialog("获取sim卡信息权限被关闭,请开启", request);
     }
 

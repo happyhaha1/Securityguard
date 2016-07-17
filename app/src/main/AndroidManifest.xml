@@ -47,6 +47,10 @@
         <activity android:name=".activity.lost.LostFindActivity"/>
         <activity android:name=".activity.lost.SetUp1Activity"/>
         <activity android:name=".activity.lost.SetUp2Activity"/>
+        <activity android:name=".activity.lost.SetUp3Activity"/>
+
+        <activity android:name=".activity.lost.ContactSelectActivity"/>
+
     </application>
 
 </manifest>

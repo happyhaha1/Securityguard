@@ -66,8 +66,11 @@ public class SetUp2Activity extends BaseSetUpActivity {
     public void showNext() {
         if (!isBind()) {
             Toast.makeText(this, "您还没有帮定SIM卡！", Toast.LENGTH_SHORT).show();
+//            startActivityAndFinishSelf(SetUp3Activity.class);
+        }else {
+            startActivityAndFinishSelf(SetUp3Activity.class);
+
         }
-        startActivityAndFinishSelf(SetUp3Activity.class);
     }
 
     @Override

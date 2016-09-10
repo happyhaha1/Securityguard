@@ -57,7 +57,7 @@ public class SetUp3Activity extends BaseSetUpActivity {
         SharedPreferences.Editor edit = sp.edit();
         edit.putString("safephone", safePhone);
         edit.apply();
-//        startActivityAndFinishSelf(SetUp4Activity.class);
+        startActivityAndFinishSelf(SetUp4Activity.class);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package cn.kxlove.security.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.kxlove.security.model.BlackContactInfo;
@@ -42,10 +43,15 @@ public class BlackNumberDao {
 	public List<BlackContactInfo> getPageBlackNumber(int pagenumber,
 													 int pagesize) {
         RealmResults<BlackContactInfo> all = realm.where(BlackContactInfo.class).findAll();
+        List<BlackContactInfo> list;
         if ((pagenumber+1)*pagesize > all.size()) {
-            return all.subList(pagenumber*pagesize,all.size());
+            list = all.subList(pagenumber*pagesize,all.size());
+        }else {
+            list = all.subList(pagenumber*pagesize,(pagenumber+1)*pagesize);
         }
-        return all.subList(pagenumber*pagesize,(pagenumber+1)*pagesize);
+        ArrayList<BlackContactInfo> result = new ArrayList<>();
+        result.addAll(list);
+        return result;
 	}
 
 	/**

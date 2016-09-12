@@ -51,7 +51,7 @@ public class AddBlackNumberActivity extends BaseActivity {
         mNameET = (EditText) findViewById(R.id.et_blackname);
     }
 
-    @Event(value = {R.id.add_blacknum_btn,R.id.add_fromcontact_btn})
+    @Event(value = {R.id.imgv_leftbtn,R.id.add_blacknum_btn,R.id.add_fromcontact_btn})
     private void onImgvClick(View v) {
         switch (v.getId()) {
             case R.id.imgv_leftbtn:

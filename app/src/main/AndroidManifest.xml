@@ -60,6 +60,20 @@
             </intent-filter>
         </receiver>
 
+        <!-- 拦截黑名单信息 -->
+        <receiver android:name=".recvier.InterceptSmsReciever" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".recvier.InterceptCallReciever" >
+            <intent-filter android:priority="2147483647" >
+                <action android:name="android.intent.action.PHONE_STATE" />
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>
+
         <service
             android:name=".service.GPSLocationService"
             android:persistent="true" >

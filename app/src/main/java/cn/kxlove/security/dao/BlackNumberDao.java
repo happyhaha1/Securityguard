@@ -65,11 +65,13 @@ public class BlackNumberDao {
 	 * @return
 	 */
 	public int getBlackContactMode(String number) {
-		// 得到可读的数据库
-		BlackContactInfo phoneNumber = realm.where(BlackContactInfo.class).equalTo("phoneNumber", number).findFirst();
-
-		return phoneNumber.mode;
-	}
+        // 得到可读的数据库
+        BlackContactInfo phoneNumber = realm.where(BlackContactInfo.class).equalTo("phoneNumber", number).findFirst();
+        if (phoneNumber == null) {
+            return 0;
+        }
+        return phoneNumber.mode;
+    }
 
 	/**
 	 * 获取数据库的总条目个数

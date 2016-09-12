@@ -49,9 +49,9 @@
         <activity android:name=".activity.lost.SetUp2Activity"/>
         <activity android:name=".activity.lost.SetUp3Activity"/>
         <activity android:name=".activity.lost.SetUp4Activity"/>
-
         <activity android:name=".activity.lost.ContactSelectActivity"/>
 
+        <activity android:name=".activity.SecurityPhoneActivity"/>
     </application>
 
 </manifest>

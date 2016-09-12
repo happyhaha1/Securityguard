@@ -50,7 +50,6 @@ public class BaseActivity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void setStatusBarColor(@ColorInt int color) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = this.getWindow();
 
             //取消设置透明状态栏,使 ContentView 内容不再覆盖状态栏
@@ -64,7 +63,6 @@ public class BaseActivity extends AppCompatActivity {
 
 
             ViewGroup mContentView = (ViewGroup) this.findViewById(Window.ID_ANDROID_CONTENT);
-    //        View mChildView = null;
             if (mContentView != null) {
                 View mChildView = mContentView.getChildAt(0);
                 if (mChildView != null) {

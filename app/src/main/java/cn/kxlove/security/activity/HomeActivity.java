@@ -55,6 +55,7 @@ public class HomeActivity extends BaseActivity {
                         }
                         break;
                     case 1://通讯卫士
+                        startActivity(SecurityPhoneActivity.class);
                         break;
                     case 2://软件管家
                         break;

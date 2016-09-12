@@ -73,6 +73,6 @@ public class BlackNumberDao {
 	 *
 	 */
 	public int getTotalNumber() {
-		return 0;
+		return realm.where(BlackContactInfo.class).findAll().size();
 	}
 }

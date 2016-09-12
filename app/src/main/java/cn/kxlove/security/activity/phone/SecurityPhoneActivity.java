@@ -1,5 +1,6 @@
-package cn.kxlove.security.activity;
+package cn.kxlove.security.activity.phone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AbsListView;
@@ -160,7 +161,7 @@ public class SecurityPhoneActivity extends BaseActivity{
                 break;
             case R.id.btn_addblacknumber:
                 // 跳转至添加黑名单页面
-//                startActivity(new Intent(this, AddBlackNumberActivity.class));
+                startActivity(new Intent(this, AddBlackNumberActivity.class));
                 break;
         }
     }

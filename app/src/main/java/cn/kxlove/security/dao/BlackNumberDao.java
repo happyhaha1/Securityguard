@@ -42,6 +42,9 @@ public class BlackNumberDao {
 	public List<BlackContactInfo> getPageBlackNumber(int pagenumber,
 													 int pagesize) {
         RealmResults<BlackContactInfo> all = realm.where(BlackContactInfo.class).findAll();
+        if ((pagenumber+1)*pagesize > all.size()) {
+            return all.subList(pagenumber*pagesize,all.size());
+        }
         return all.subList(pagenumber*pagesize,(pagenumber+1)*pagesize);
 	}
 

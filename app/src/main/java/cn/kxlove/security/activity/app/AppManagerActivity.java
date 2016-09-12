@@ -14,7 +14,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.text.format.Formatter;
 import android.view.View;
-import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -75,7 +74,6 @@ public class AppManagerActivity extends BaseActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_app_manager);
         //注册广播
         receciver = new UninstallRececiver();
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_REMOVED);
@@ -153,7 +151,7 @@ public class AppManagerActivity extends BaseActivity{
     }
 //
     private void initData() {
-        appInfos = new ArrayList<AppInfo>();
+        appInfos = new ArrayList<>();
         new Thread(){
             public void run() {
                 appInfos.clear();

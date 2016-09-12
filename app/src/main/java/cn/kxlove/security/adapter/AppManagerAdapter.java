@@ -10,9 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.xutils.view.annotation.ViewInject;
-import org.xutils.x;
-
 import java.util.List;
 
 import cn.kxlove.security.R;
@@ -101,8 +98,24 @@ public class AppManagerAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             convertView = View.inflate(context, R.layout.item_appmanager_list,
                     null);
-            x.view().inject(viewHolder,convertView);
-
+            viewHolder.mAppIconImgv = (ImageView) convertView
+                    .findViewById(R.id.imgv_appicon);
+            viewHolder.mAppLocationTV = (TextView) convertView
+                    .findViewById(R.id.tv_appisroom);
+            viewHolder.mAppSizeTV = (TextView) convertView
+                    .findViewById(R.id.tv_appsize);
+            viewHolder.mAppNameTV = (TextView) convertView
+                    .findViewById(R.id.tv_appname);
+            viewHolder.mLuanchAppTV = (TextView) convertView
+                    .findViewById(R.id.tv_launch_app);
+            viewHolder.mSettingAppTV = (TextView) convertView
+                    .findViewById(R.id.tv_setting_app);
+            viewHolder.mShareAppTV = (TextView) convertView
+                    .findViewById(R.id.tv_share_app);
+            viewHolder.mUninstallTV = (TextView) convertView
+                    .findViewById(R.id.tv_uninstall_app);
+            viewHolder.mAppOptionLL = (LinearLayout) convertView
+                    .findViewById(R.id.ll_option_app);
             convertView.setTag(viewHolder);
         }
         if (appInfo != null) {
@@ -143,33 +156,24 @@ public class AppManagerAdapter extends BaseAdapter {
         return tv;
     }
 
-    private static class ViewHolder {
+    static class ViewHolder {
         /** 启动App */
-        @ViewInject(R.id.tv_launch_app)
         TextView mLuanchAppTV;
         /** 卸载App */
-        @ViewInject(R.id.tv_uninstall_app)
         TextView mUninstallTV;
         /** 分享App */
-        @ViewInject(R.id.tv_share_app)
         TextView mShareAppTV;
         /** 设置App */
-        @ViewInject(R.id.tv_setting_app)
         TextView mSettingAppTV;
         /** app 图标 */
-        @ViewInject(R.id.imgv_appicon)
         ImageView mAppIconImgv;
         /** app位置 */
-        @ViewInject(R.id.tv_appisroom)
         TextView mAppLocationTV;
         /** app大小 */
-        @ViewInject(R.id.tv_appsize)
         TextView mAppSizeTV;
         /** app名称 */
-        @ViewInject(R.id.tv_appname)
         TextView mAppNameTV;
         /** 操作App的线性布局 */
-        @ViewInject(R.id.ll_option_app)
         LinearLayout mAppOptionLL;
     }
 

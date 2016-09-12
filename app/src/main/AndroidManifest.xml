@@ -54,6 +54,8 @@
         <activity android:name=".activity.phone.SecurityPhoneActivity"/>
         <activity android:name=".activity.phone.AddBlackNumberActivity"/>
 
+        <activity android:name=".activity.app.AppManagerActivity"/>
+
         <receiver android:name=".recvier.SmsLostFindReciver" >
             <intent-filter android:priority="2147483647" >
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />

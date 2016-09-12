@@ -14,6 +14,7 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 
 import cn.kxlove.security.R;
+import cn.kxlove.security.activity.app.AppManagerActivity;
 import cn.kxlove.security.activity.base.BaseActivity;
 import cn.kxlove.security.activity.lost.LostFindActivity;
 import cn.kxlove.security.activity.phone.SecurityPhoneActivity;
@@ -59,6 +60,7 @@ public class HomeActivity extends BaseActivity {
                         startActivity(SecurityPhoneActivity.class);
                         break;
                     case 2://软件管家
+                        startActivity(AppManagerActivity.class);
                         break;
                     case 3://病毒查杀
                         break;

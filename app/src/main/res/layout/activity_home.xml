@@ -15,16 +15,18 @@
         android:orientation="horizontal" >
 
         <ImageView
+            android:id="@+id/iv_helper"
             android:layout_width="100dp"
             android:layout_height="107.5dp"
-            android:background="@drawable/superman" />
+            android:background="@drawable/lion" />
 
         <TextView
             android:id="@+id/tv_ad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-16dp"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
-            android:paddingTop="30dp"
             android:text="主银，我是您的手机小护卫"
             android:textColor="#90000000"
             android:textScaleX="1.1"

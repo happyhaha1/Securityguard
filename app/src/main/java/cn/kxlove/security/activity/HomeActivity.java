@@ -8,6 +8,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.xutils.view.annotation.ContentView;
@@ -29,6 +31,13 @@ public class HomeActivity extends BaseActivity {
     @ViewInject(R.id.gv_home)
     private GridView gridView;
 
+    @ViewInject(R.id.iv_helper)
+    private ImageView helper;
+
+    @ViewInject(R.id.tv_ad)
+    private TextView ad;
+
+
     private long mExitTime;
 
     //存储设置文件
@@ -37,8 +46,6 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_home);
-//        x.view().inject(this);
         setStatusBarColor(Color.argb(255,197,195,195));
         msharedPreferences = getSharedPreferences("config",MODE_PRIVATE);
 
@@ -78,6 +85,11 @@ public class HomeActivity extends BaseActivity {
             }
         });
 
+        initHelper();
+    }
+
+    private void initHelper() {
+//        ad.setText("dzz");
     }
 
     /**

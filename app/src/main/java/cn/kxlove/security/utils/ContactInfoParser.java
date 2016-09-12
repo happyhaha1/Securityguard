@@ -80,6 +80,7 @@ public class ContactInfoParser {
                 infos.add(info);
             }
         }
+        assert mCursor != null;
         mCursor.close();
         return infos;
     }

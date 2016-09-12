@@ -94,8 +94,7 @@ public class LostFindActivity extends BaseActivity{
     private void onImgvClick(View v) {
         switch (v.getId()) {
             case R.id.rl_inter_setup_wizard:
-                startActivity(SetUp1Activity.class);
-                finish();
+                startActivityAndFinishSelf(SetUp1Activity.class);
                 break;
             case R.id.imgv_leftbtn:
                 finish();

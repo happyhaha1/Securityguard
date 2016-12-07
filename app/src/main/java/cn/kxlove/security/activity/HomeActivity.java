@@ -18,6 +18,7 @@ import org.xutils.view.annotation.ViewInject;
 import cn.kxlove.security.R;
 import cn.kxlove.security.activity.app.AppManagerActivity;
 import cn.kxlove.security.activity.base.BaseActivity;
+import cn.kxlove.security.activity.cache.CacheClearListActivity;
 import cn.kxlove.security.activity.lost.LostFindActivity;
 import cn.kxlove.security.activity.phone.SecurityPhoneActivity;
 import cn.kxlove.security.activity.virus.VirusScanActivity;
@@ -74,6 +75,7 @@ public class HomeActivity extends BaseActivity {
                         startActivity(VirusScanActivity.class);
                         break;
                     case 4://缓存清理
+                        startActivity(CacheClearListActivity.class);
                         break;
                     case 5://进程管理
                         break;

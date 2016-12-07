@@ -1,5 +1,6 @@
 package cn.kxlove.security.activity.virus;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,7 +22,9 @@ import cn.kxlove.security.activity.base.BaseActivity;
 @ContentView(R.layout.activity_virus_scan)
 public class VirusScanActivity extends BaseActivity {
 
+    @ViewInject(R.id.tv_lastscantime)
     private TextView mLastTimeTV;
+
     private SharedPreferences mSP;
 
     @Override
@@ -78,10 +82,16 @@ public class VirusScanActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.rl_allscanvirus:
-                // 跳转至添加黑名单页面
-//                startActivity(new Intent(this, AddBlackNumberActivity.class));
+                startActivity(new Intent(this, VirusScanSpeedActivity.class));
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        String string = mSP.getString("lastVirusScan", "您还没有查杀病毒！");
+        mLastTimeTV.setText(string);
+        super.onResume();
     }
 
 }

@@ -80,6 +80,8 @@
 
         <activity android:name=".activity.virus.VirusScanActivity">
         </activity>
+        <activity android:name=".activity.virus.VirusScanSpeedActivity">
+        </activity>
     </application>
 
 </manifest>

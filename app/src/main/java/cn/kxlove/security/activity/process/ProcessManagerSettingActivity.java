@@ -38,7 +38,7 @@ public class ProcessManagerSettingActivity extends BaseActivity {
 
     /**初始化控件*/
     private void initView() {
-        ((TextView) findViewById(R.id.tv_title)).setText("缓存清理");
+        ((TextView) findViewById(R.id.tv_title)).setText("进程管理设置");
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
         mLeftImgv.setImageResource(R.drawable.back);
         findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_green));
@@ -61,7 +61,7 @@ public class ProcessManagerSettingActivity extends BaseActivity {
     }
 
     @Event(value = {R.id.tgb_killprocess_lockscreen,R.id.tgb_showsys_process},type = CompoundButton.OnCheckedChangeListener.class)
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    private void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         switch (buttonView.getId()) {
             case R.id.tgb_showsys_process:
                 saveStatus("showSystemProcess",isChecked);

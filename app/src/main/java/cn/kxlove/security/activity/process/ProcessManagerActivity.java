@@ -2,6 +2,7 @@ package cn.kxlove.security.activity.process;
 
 import android.app.ActivityManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.Formatter;
 import android.view.View;
@@ -140,11 +141,15 @@ public class ProcessManagerActivity extends BaseActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        SharedPreferences mSP = getSharedPreferences("config", MODE_PRIVATE);
+                        boolean showSystemProcess = mSP.getBoolean("showSystemProcess", true);
                         for (TaskInfo taskInfo : runningTaskInfos) {
                             if (taskInfo.isUserApp) {
                                 userTaskInfos.add(taskInfo);
                             } else {
-                                sysTaskInfo.add(taskInfo);
+                                if (showSystemProcess) {
+                                    sysTaskInfo.add(taskInfo);
+                                }
                             }
                         }
                         if (adapter == null) {
@@ -158,7 +163,9 @@ public class ProcessManagerActivity extends BaseActivity {
                         if (userTaskInfos.size() > 0){
                             mProcessNumTV.setText("用户进程： "
                                     + userTaskInfos.size() + "个");
-                        }else{mProcessNumTV.setText("系统进程：" + sysTaskInfo.size()
+                        }
+                        if (sysTaskInfo.size() > 0){
+                            mProcessNumTV.setText("系统进程：" + sysTaskInfo.size()
                                 + "个");
                         }
                     }

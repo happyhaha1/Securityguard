@@ -25,8 +25,12 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        ButterKnife.bind(this);
 //        x().inject(this);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
         x.view().inject(this);
-
     }
 
     /**

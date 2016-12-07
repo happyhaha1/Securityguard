@@ -15,20 +15,21 @@ public class HomeAdapter extends BaseAdapter {
 	
 	private int[] imageId = { R.drawable.safe,
 			 R.drawable.callmsgsafe, R.drawable.app, R.drawable.trojan, R.drawable.sysoptimize,R.drawable.taskmanager,
-			 R.drawable.netmanager,R.drawable.atools,R.drawable.settings };
+//			 R.drawable.netmanager,R.drawable.atools,R.drawable.settings
+	};
 	private String[] names = { "手机防盗",   "通讯卫士","软件管家","手机杀毒","缓存清理","进程管理",
-			"流量统计", "高级工具", "设置中心" };
+//			"流量统计", "高级工具", "设置中心"
+	};
 	private Context context;
 
 	public HomeAdapter(Context context) {
 		this.context = context;
 	}
-	// 设置gridView一个多少个条目
 	@Override
 	public int getCount() {
-		return 9;
+		return 6;
 	}
-	// 设置每个条目的界面
+
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View view = View.inflate(context,
@@ -39,11 +40,12 @@ public class HomeAdapter extends BaseAdapter {
 		tv_name.setText(names[position]);
 		return view;
 	}
-	//  后面两个方法暂时不需要设置
+
 	@Override
 	public Object getItem(int position) {
 		return null;
 	}
+
 	@Override
 	public long getItemId(int position) {
 		return 0;

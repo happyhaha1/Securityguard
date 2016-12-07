@@ -21,6 +21,7 @@ import cn.kxlove.security.activity.base.BaseActivity;
 import cn.kxlove.security.activity.cache.CacheClearListActivity;
 import cn.kxlove.security.activity.lost.LostFindActivity;
 import cn.kxlove.security.activity.phone.SecurityPhoneActivity;
+import cn.kxlove.security.activity.process.ProcessManagerActivity;
 import cn.kxlove.security.activity.virus.VirusScanActivity;
 import cn.kxlove.security.adapter.HomeAdapter;
 import cn.kxlove.security.dialog.InterPasswordDialog;
@@ -78,6 +79,7 @@ public class HomeActivity extends BaseActivity {
                         startActivity(CacheClearListActivity.class);
                         break;
                     case 5://进程管理
+                        startActivity(ProcessManagerActivity.class);
                         break;
                     case 6://流量统计
                         break;

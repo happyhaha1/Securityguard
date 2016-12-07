@@ -86,6 +86,14 @@
         </activity>
         <activity android:name=".activity.cache.CacheClearListActivity">
         </activity>
+
+        <service
+            android:name=".service.AutoKillProcessService"
+            android:permission="true">
+        </service>
+
+        <activity android:name=".activity.process.ProcessManagerActivity">
+        </activity>
     </application>
 
 </manifest>

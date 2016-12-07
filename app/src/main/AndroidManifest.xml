@@ -94,6 +94,8 @@
 
         <activity android:name=".activity.process.ProcessManagerActivity">
         </activity>
+        <activity android:name=".activity.process.ProcessManagerSettingActivity">
+        </activity>
     </application>
 
 </manifest>

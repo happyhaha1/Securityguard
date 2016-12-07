@@ -117,8 +117,8 @@ public class SecurityPhoneActivity extends BaseActivity{
         ((TextView) findViewById(R.id.tv_title)).setText("通讯卫士");
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
         mLeftImgv.setImageResource(R.drawable.back);
-        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.purple));
-        setStatusBarColor(getResources().getColor(R.color.purple));
+        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_purple));
+        setStatusBarColor(getResources().getColor(R.color.bright_purple));
         mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
 
             @Override

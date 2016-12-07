@@ -1,6 +1,7 @@
 package cn.kxlove.security.activity.process;
 
 import android.app.ActivityManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.Formatter;
 import android.view.View;
@@ -70,9 +71,12 @@ public class ProcessManagerActivity extends BaseActivity {
 
 
     private void initView() {
-        ((TextView) findViewById(R.id.tv_title)).setText("缓存清理");
+        ((TextView) findViewById(R.id.tv_title)).setText("进程管理");
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
         mLeftImgv.setImageResource(R.drawable.back);
+
+        ImageView mRightImgv = (ImageView) findViewById(R.id.imgv_rightbtn);
+        mRightImgv.setImageResource(R.drawable.processmanager_setting_icon);
         findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_green));
         setStatusBarColor(getResources().getColor(R.color.bright_green));
 
@@ -171,7 +175,7 @@ public class ProcessManagerActivity extends BaseActivity {
                 break;
             case R.id.imgv_rightbtn:
                 //跳转至 进程管理设置页面
-//                startActivity(new Intent(this,ProcessManagerSettingActivity.class));
+                startActivity(new Intent(this,ProcessManagerSettingActivity.class));
                 break;
             case R.id.btn_selectall:
                 selectAll();

@@ -42,8 +42,8 @@ public class AddBlackNumberActivity extends BaseActivity {
         ((TextView) findViewById(R.id.tv_title)).setText("添加黑名单");
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
         mLeftImgv.setImageResource(R.drawable.back);
-        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.purple));
-        setStatusBarColor(getResources().getColor(R.color.purple));
+        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_purple));
+        setStatusBarColor(getResources().getColor(R.color.bright_purple));
 
         mSmsCB = (CheckBox) findViewById(R.id.cb_blacknumber_sms);
         mTelCB = (CheckBox) findViewById(R.id.cb_blacknumber_tel);

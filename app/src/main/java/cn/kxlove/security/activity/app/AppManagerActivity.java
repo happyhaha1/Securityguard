@@ -87,8 +87,8 @@ public class AppManagerActivity extends BaseActivity{
         ((TextView) findViewById(R.id.tv_title)).setText("通讯卫士");
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
         mLeftImgv.setImageResource(R.drawable.back);
-        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.purple));
-        setStatusBarColor(getResources().getColor(R.color.purple));
+        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_yellow));
+        setStatusBarColor(getResources().getColor(R.color.bright_yellow));
 
         //拿到手机剩余内存和SD卡剩余内存
         getMemoryFromPhone();

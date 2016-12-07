@@ -20,6 +20,7 @@ import cn.kxlove.security.activity.app.AppManagerActivity;
 import cn.kxlove.security.activity.base.BaseActivity;
 import cn.kxlove.security.activity.lost.LostFindActivity;
 import cn.kxlove.security.activity.phone.SecurityPhoneActivity;
+import cn.kxlove.security.activity.virus.VirusScanActivity;
 import cn.kxlove.security.adapter.HomeAdapter;
 import cn.kxlove.security.dialog.InterPasswordDialog;
 import cn.kxlove.security.dialog.SetUpPasswordDialog;
@@ -70,6 +71,7 @@ public class HomeActivity extends BaseActivity {
                         startActivity(AppManagerActivity.class);
                         break;
                     case 3://病毒查杀
+                        startActivity(VirusScanActivity.class);
                         break;
                     case 4://缓存清理
                         break;

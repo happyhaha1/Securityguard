@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.widget.Toast;
 
-import com.stericson.RootTools.RootTools;
 
 import cn.kxlove.security.model.AppInfo;
 
@@ -65,23 +64,6 @@ public class EngineUtils {
             intent.setAction(Intent.ACTION_DELETE);
             intent.setData(Uri.parse("package:" + appInfo.packageName));
             context.startActivity(intent);
-        }else{
-            //系统应用 ，root权限 利用linux命令删除文件。
-            if(!RootTools.isRootAvailable()){
-                Toast.makeText(context, "卸载系统应用，必须要root权限", Toast.LENGTH_SHORT).show();
-                return ;
-            }
-            try {
-                if(!RootTools.isAccessGiven()){
-                    Toast.makeText(context, "请授权安全卫士root权限", Toast.LENGTH_SHORT).show();
-                    return ;
-                }
-                RootTools.sendShell("mount -o remount ,rw /system", 3000);
-                RootTools.sendShell("rm -r "+appInfo.apkPath, 30000);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
         }
     }
 }
